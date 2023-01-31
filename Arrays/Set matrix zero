@@ -1,47 +1,47 @@
-Approach-
+// Approach-
 
-Brute force-
-firstly we see every 0 we got in matrix and make other values in that similar rows and coloumn to be -1
-and then we update these values to 0 in a traversal
+// Brute force-
+// firstly we see every 0 we got in matrix and make other values in that similar rows and coloumn to be -1
+// and then we update these values to 0 in a traversal
 
-TC-0(N*M *N*M)
-SC-0(1);
+// TC-0(N*M *N*M)
+// SC-0(1);
 
-Optimised-
+// Optimised-
 
-we treat row=0 and coloumn=0 as a dummy coloumn and row in this we take a variable col=0
-and if row[i][0]=0 for only 1st coloumn as it may affect other values we make col=1;
+// we treat row=0 and coloumn=0 as a dummy coloumn and row in this we take a variable col=0
+// and if row[i][0]=0 for only 1st coloumn as it may affect other values we make col=1;
 
-then on running loop if m[i][j]==0 we make m[i][0]=0 and m[0][j]=0;
-thn run loop from behind i=row-1 and j=col-1 if m[i][0]=0 || m[0][j]=0 we make m[i][j]=0 
+// then on running loop if m[i][j]==0 we make m[i][0]=0 and m[0][j]=0;
+// thn run loop from behind i=row-1 and j=col-1 if m[i][0]=0 || m[0][j]=0 we make m[i][j]=0 
 
-and if col=1 we make m[i][0]=0;
+// and if col=1 we make m[i][0]=0;
 
-TC-2*O(N*M)
-SC-0(1);
+// TC-2*O(N*M)
+// SC-0(1);
 
 
-code 
+// code 
 
-class Solution {
-public:
-    void setZeroes(vector<vector<int>>& matrix) {
-        int col0 = 1, rows = matrix.size(), cols = matrix[0].size();
+// class Solution {
+// public:
+//     void setZeroes(vector<vector<int>>& matrix) {
+//         int col0 = 1, rows = matrix.size(), cols = matrix[0].size();
 
-    for (int i = 0; i < rows; i++) {
-        if (matrix[i][0] == 0) col0 = 0;
-        for (int j = 1; j < cols; j++)
-            if (matrix[i][j] == 0)
-                matrix[i][0] = matrix[0][j] = 0;
-    }
+//     for (int i = 0; i < rows; i++) {
+//         if (matrix[i][0] == 0) col0 = 0;
+//         for (int j = 1; j < cols; j++)
+//             if (matrix[i][j] == 0)
+//                 matrix[i][0] = matrix[0][j] = 0;
+//     }
 
-    for (int i = rows - 1; i >= 0; i--) {
-        for (int j = cols - 1; j >= 1; j--)
-            if (matrix[i][0] == 0 || matrix[0][j] == 0)
-                matrix[i][j] = 0;
-        if (col0 == 0) matrix[i][0] = 0;
-    }
-    }
-};
+//     for (int i = rows - 1; i >= 0; i--) {
+//         for (int j = cols - 1; j >= 1; j--)
+//             if (matrix[i][0] == 0 || matrix[0][j] == 0)
+//                 matrix[i][j] = 0;
+//         if (col0 == 0) matrix[i][0] = 0;
+//     }
+//     }
+// };
 
 
